@@ -10,13 +10,7 @@ const auth = require("../middleware/auth");
 
 const secret = "RESTAPI";
 
-// Middlewares
-router.use(express.urlencoded());
-router.use(bodyParser());
 
-router.use(express.json());
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
 dotenv.config();
 
 router.post("/signup", async (req, res) => {
@@ -109,11 +103,11 @@ router.put("/logout", auth, function (req, res) {
   });
 });
 
-router.get("*", (req, res) => {
-  res.status(404).json({
-    status: "Failed",
-    message: "API NOT FOUND",
-  });
-});
+// router.get("*", (req, res) => {
+//   res.status(404).json({
+//     status: "Failed",
+//     message: "API NOT FOUND",
+//   });
+// });
 
 module.exports = router;
