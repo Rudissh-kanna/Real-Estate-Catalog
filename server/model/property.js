@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const propertySchema=new mongoose.Schema({
+    propertyID: String, 
     propertyType: {type:String},
     negotiable:{type:String},
     price: {type:Number},
