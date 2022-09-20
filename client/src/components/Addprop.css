@@ -1,0 +1,52 @@
+* {
+    font-family: Montserrat, sans-serif;
+}
+
+.step-container {
+    max-width: 1120px;
+    height: fit-content;
+    margin-top: 30px;
+    margin-left: 80px;
+    border-radius: 2rem;
+}
+
+.MuiStepLabel-labelContainer span {
+    font-size: 1.5rem;
+}
+
+.MuiStepLabel-root{
+    padding: 20px;
+    border-radius: 2rem;
+}
+
+.form-container {
+    max-width: 1200px;
+    height: fit-content;
+    margin: 30px auto;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    border-radius: 8px;
+    box-shadow: 5px 5px rgba(65, 64, 64, 0.963);
+    border: 5px solid grey;
+}
+
+.form-body {
+    width: 100%;
+    box-sizing: border-box;
+    height: fit-content;
+    padding: 60px 60px;
+}
+
+.form-container div {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.form-actions {
+   text-align: center;
+}
+
+.hidden{
+    background-color: aqua;
+}
