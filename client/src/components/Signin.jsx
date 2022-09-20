@@ -43,19 +43,19 @@ const Signin = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const data = await fetch("http://localhost:8080/login", {
+     await fetch("http://localhost:8080/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userDetails),
-    }).then(data => data.json());
-    if (data.status === "Sucess") {
-      alert(data.status)
-    } else {
-      setError(data.message);
-    }
+    }).then(data => data.json()).then((res)=>{
+        // console.log(res)
+        localStorage.setItem("token", res.token)
+        setError(res.message);
+    });
+
   };
 
   return (

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import '../css/Style.css'
 
 const useStyles = makeStyles(theme => ({
@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     padding: theme.spacing(2),
     marginTop: "9%",
-
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
       width: "500px",
@@ -93,12 +92,14 @@ const Signup = () => {
       />
       <div>
       {error && <p className="error_msg">{error}</p>}
-      <div style={{marginLeft:"60px"}}>
+      <div style={{marginLeft:"20px"}}>
         <Button variant="contained" onClick={handleClose}>Cancel</Button>
         <Button type="submit" variant="contained" color="primary">
           Sign Up
         </Button>
+        <div style={{alignItem:"center", marginLeft:"40%"}}><Link to='/login'>Sign In</Link></div>
         </div>
+       
       </div>
     </form>
   );
