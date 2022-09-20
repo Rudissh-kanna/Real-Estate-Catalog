@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { useNavigate } from "react-router-dom";
+import '../css/Style.css'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,22 +26,29 @@ const useStyles = makeStyles(theme => ({
 
 const Signup = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
+
   const [userDetails, setUserDetails] = useState({
     email: "",
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState({});
-
+  const [error, setError] = useState("");
+  
+  const handleClose=()=>{
+    setUserDetails({email: "",
+    password: "",
+    confirmPassword: "",})
+  }
+  
   const handleChange = e => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
-  // console.log(userDetails)
+
   const handleSubmit = async e => {
     e.preventDefault();
-    // console.log(userDetails);
 
-    const data = await fetch("http://localhost:8080/signup", {
+    const data= await fetch("http://localhost:8080/signup", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -47,15 +56,15 @@ const Signup = () => {
       },
       body: JSON.stringify(userDetails),
     }).then(data => data.json());
-    console.log("dataa", data);
+
     if (data.status === "sucess") {
-      alert("Sucess !!!");
-    } else {
-      setError(data.message);
-      // alert(data.message)
-    }
+        navigate("/login")
+      } else {
+        setError(data.message);
+      }
+
   };
-  console.log(error);
+
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       <TextField
@@ -63,7 +72,6 @@ const Signup = () => {
         variant="filled"
         type="email"
         name="email"
-        // error={error}
         required
         onChange={handleChange}
       />
@@ -73,7 +81,6 @@ const Signup = () => {
         type="password"
         name="password"
         required
-        // error={error}
         onChange={handleChange}
       />
       <TextField
@@ -81,15 +88,17 @@ const Signup = () => {
         variant="filled"
         type="password"
         name="confirmpassword"
-        // error={error}
         required
         onChange={handleChange}
       />
       <div>
-        <Button variant="contained">Cancel</Button>
+      {error && <p className="error_msg">{error}</p>}
+      <div style={{marginLeft:"60px"}}>
+        <Button variant="contained" onClick={handleClose}>Cancel</Button>
         <Button type="submit" variant="contained" color="primary">
-          Signup
+          Sign Up
         </Button>
+        </div>
       </div>
     </form>
   );

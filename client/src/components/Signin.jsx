@@ -1,8 +1,11 @@
-
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import '../css/Style.css'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,15 +28,21 @@ const useStyles = makeStyles(theme => ({
 
 const Signin = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
+
   const [userDetails, setUserDetails] = useState({});
+  const [error, setError] = useState("");
+
+  const handleClose=()=>{
+    navigate("/signup")
+  }
 
   const handleChange = e => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
-console.log(userDetails)
+
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(userDetails);
     const data = await fetch("http://localhost:8080/login", {
       method: "POST",
       headers: {
@@ -42,8 +51,13 @@ console.log(userDetails)
       },
       body: JSON.stringify(userDetails),
     }).then(data => data.json());
-    console.log(data);
+    if (data.status === "Sucess") {
+      alert(data.status)
+    } else {
+      setError(data.message);
+    }
   };
+
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       <TextField
@@ -62,13 +76,18 @@ console.log(userDetails)
         required
         onChange={handleChange}
       />
-      <div>
-        <Button variant="contained">
-          Cancel
-        </Button>
+        {error && <p className="error_msg">{error}</p>}
+        <div style={{alignItem:"center"}}>
+        <Button variant="contained" onClick={handleClose}>Cancel</Button>
         <Button type="submit" variant="contained" color="primary">
-          SignIn
+          Sign In
         </Button>
+      </div>
+
+      <div className="right">
+        <Link to="/signup" style={{fontSize:"25px"}}>
+            Sign Up
+        </Link>
       </div>
     </form>
   );

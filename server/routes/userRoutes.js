@@ -17,12 +17,12 @@ router.post("/signup", async (req, res) => {
   try {
     const { email, password, confirmpassword } = req.body;
     if (!(email && password && confirmpassword)) {
-      res.status(400).send("All input is required");
+      res.status(400).send({status: "failed",message:"All input is required"});
     }
     const oldUser = await userModel.findOne({ email });
 
     if (oldUser) {
-      return res.status(409).send("User Already Exist. Please Login");
+      return res.status(409).send({status: "failed",message:"User Already Exist. Please Login"});
     }
 
     encryptedPassword = await bcrypt.hash(password, 10);
@@ -35,13 +35,13 @@ router.post("/signup", async (req, res) => {
 
       res.json({
         status: "sucess",
-        message: "SignUp successful",
+        message: "SignUp Successful",
         user,
       });
     } else {
       res.json({
         status: "failed",
-        message: "password mismatch",
+        message: "Password Mismatch",
       });
     }
   } catch (err) {
@@ -61,13 +61,13 @@ router.post("/login", async (req, res) => {
     if (!data) {
       return res.status(400).json({
         status: "failed",
-        message: "User is not registerd",
+        message: "User is not Registerd Please Click On Sigup For Registration",
       });
     } else {
       if (!bcrypt.compareSync(password, data.password)) {
         res.json({
           status: "failed",
-          message: "wrong password",
+          message: "Wrong Password",
         });
       } else {
         const token = jwt.sign(
@@ -96,18 +96,12 @@ router.put("/logout", auth, function (req, res) {
   const authHeader = req.headers["x-access-token"];
   jwt.sign(authHeader, "", { expiresIn: 1 }, (logout, err) => {
     if (logout) {
-      res.send({ msg: "You have been Logged Out" });
+      res.send({ msg: "You Have been Logged Out" });
     } else {
       res.send({ msg: "Error" });
     }
   });
 });
 
-// router.get("*", (req, res) => {
-//   res.status(404).json({
-//     status: "Failed",
-//     message: "API NOT FOUND",
-//   });
-// });
 
 module.exports = router;
