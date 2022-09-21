@@ -1,0 +1,17 @@
+.header-Container{
+    margin-left: 250px;
+    display: flex;
+    justify-content:space-between;
+    padding: 8px
+}
+
+.header-Container .header-userName-container span{
+    margin-right: 10px;
+}
+
+.header-Container .header-userName-container .header-userName-img img{
+    margin-top: 10px;
+}
+
+
+
