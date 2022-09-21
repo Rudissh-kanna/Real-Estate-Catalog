@@ -4,12 +4,12 @@ const SideBar = () => {
     return (
         <div className="sideBar-Container">
             <div className="sideBar-LogoContainer">
-                <h1>LOGO</h1>
+                <img src="./Images/house_logo.png" alt="LOGO"></img>
             </div>
             <div className="sideBar-NavContainer">
                 <ul>
                     <li>
-                        <span>
+                        <span className="propClass">
                             <img src="./Images/property_img.png" alt="property_img" ></img><a href="/#" onClick={(e) => e.preventDefault()} >Property</a>
                         </span>
                     </li>

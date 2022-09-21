@@ -2,7 +2,7 @@
     margin-left: 250px;
     display: flex;
     justify-content:space-between;
-    padding: 5px
+    padding: 8px
 }
 
 .header-Container .header-userName-container span{
@@ -15,4 +15,8 @@
 
 .header-bottom-line{
     margin-left: 250px;
+}
+
+.header-userName-container .dropDown{
+    width:20px;
 }

@@ -6,14 +6,18 @@
 }
 
 .sideBar-LogoContainer{
-    margin-left: 70px;
-    margin-bottom: 40px;
-    color:#1A1B1C;
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 10px;
-    line-height: 44px;
+    height:50px;
+    width:50px;
+    margin:0 auto;
+}
+
+.sideBar-LogoContainer img{
+    height: 100%;
+    width: 100%;
+}
+
+.sideBar-NavContainer .propClass a{
+    color:#2289FF;
 }
 
 .sideBar-NavContainer li{
