@@ -4,7 +4,7 @@ import { PropertyContext } from "../context";
 
 const PropertyDetail = () => {
 
-    const {formData, setFormData, data, setData} = useContext(PropertyContext);
+    const {formData, setFormData, data, setData, helperProp} = useContext(PropertyContext);
 
     function handleLengthChange(e) {
         if (formData.breath === '') {
@@ -28,19 +28,19 @@ const PropertyDetail = () => {
         <Grid container>
             <Grid item xs={6}>
                 <div style={{width:"92%", marginLeft: "4%"}}>
-                     <TextField label="Length" size="small" type="number" onChange={handleLengthChange}
+                     <TextField required label="Length" size="small" type="number" onChange={handleLengthChange}
                      value={formData.length}> Eg: 1000</TextField>
                 </div>
             </Grid>
             <Grid item xs={6}>
                 <div >
-                     <TextField label="Breadth" size="small" 
+                     <TextField required label="Breadth" size="small" 
                      value={formData.breath} type="number" onChange={calcArea}> Eg: 1000</TextField>
                 </div>
             </Grid>
             <Grid item xs={6}>
                 <div style={{width:"92%", marginLeft: "4%"}}>
-                     <TextField label="Area" size="small" type="number" value={data} inputProps={{readOnly: true}} 
+                     <TextField variant="outlined" id="total-area" helperText={helperProp}  size="small" type="number" value={data} inputProps={{readOnly: true}} 
                      onChange={(e) => setFormData(setData(e.target.value))}></TextField>
                 </div>
             </Grid>

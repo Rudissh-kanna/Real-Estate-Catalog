@@ -8,21 +8,66 @@ import LocationInfo from './LocationInfo';
 import { PropertyContext } from "../context";
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import PageHeader from "./PageHeader";
+import SideBar from "./SideBar";
+
 
 const Addprop = () => {
 
-    const {formData, setFormData, data} = useContext(PropertyContext);
+    const {formData, setFormData, data, setHelperProp} = useContext(PropertyContext);
 
     const [page, setPage] = useState(0);
 
     const navigate = useNavigate();
 
+    function checkPropertyType() {
+        const input = document.getElementById('property-type').innerText
+        if (input === "House" || input === "Plot" || input === "Commercial") {
+                setHelperProp("");
+                setPage(page + 1)
+        }
+        else {
+            setHelperProp("input Invalid");
+        }
+    }
+
+    function checkTotalArea() {
+        const input = document.getElementById('total-area').value
+        console.log(parseInt(input));
+        if (input === "" || input === NaN || input <= 0) {
+            setHelperProp("invalid input");
+        }
+        else {
+            setHelperProp("");
+            setFormData({...formData, totalArea: data})
+            setPage(page + 1)
+        }
+    }
+
+    function checkMobileNum() {
+        const input = document.getElementById('mobile-num').value
+        console.log(input);
+        if (input === "" || parseInt(input) === NaN || input.length < 10 || input.length > 10) {
+            setHelperProp("Invalid Input");
+        }
+        else {
+            setHelperProp("");
+            setPage(page + 1);
+        }
+    }
+
 
     function handleNext() { 
-        if (page === 1) {
-            setFormData({...formData, totalArea: data})
+        if (page === 0) {
+            checkPropertyType();
         }
-        if (page === 3) {
+        else if (page === 1) {
+            checkTotalArea()
+        }
+        else if (page === 2) {
+            checkMobileNum()
+        }
+        else if (page === 3) {
             
            const  config ={
                 header: 'multipart/form-data'
@@ -31,10 +76,8 @@ const Addprop = () => {
             axios.post("http://localhost:8080/add-prop", formData, config)
             .then(res => console.log(res));
             navigate('/');
-        }
-        setPage(page + 1);       
+        }  
     }
-
 
     function handlePrev() {
         if (page >= 1) {
@@ -60,9 +103,11 @@ const Addprop = () => {
 
     return (
         <>
+        <SideBar/>
+        <PageHeader/>
         <Container
-        sx={{marginLeft: 5,
-             marginTop: 6}}
+        sx={{marginLeft: 40,
+             marginTop: 3,}}
         >
         <Typography variant="h6" component="h1" 
         fontFamily="Montserrat, sans-serif"
@@ -98,10 +143,12 @@ const Addprop = () => {
         <div className="form-container">
             <div className="form-body">{PageDisplay()}</div>
             <div className="form-actions">
-                <Button variant="contained" sx={{padding: "10px 40px", borderRadius: "1.5rem", marginBottom: 2}} 
-                onClick={handlePrev}>{(page===0)?"Cancel":"Prev"}</Button>
-                <Button variant="contained" sx={{marginLeft: "2%", padding: "10px 40px", borderRadius: "1.5rem", marginBottom: 2}} 
-                onClick={handleNext}>{(page === 3)?"Submit":"Next"}</Button>
+                <Button variant="contained" sx={{ padding: "10px 60px", borderRadius: "3rem", marginBottom: 2,
+                fontSize: "1rem", fontWeight: "38rem", background:"#6AB4F8", boxShadow: "0px 13px 25px rgba(0, 0, 0, 0.15)"}} 
+                onClick={handlePrev}>{(page===0)?"Cancel":"Previous"}</Button>
+                <Button variant="contained" sx={{marginLeft: "2%", padding: "10px 60px", borderRadius: "3rem", marginBottom: 2,
+                fontSize: "1rem", fontWeight: "38rem", background: "#4C57B6", boxShadow: "0px 13px 25px rgba(0, 0, 0, 0.15)"}} 
+                onClick={handleNext} type="submit">{(page === 3)?"Add Property":"Save & Continue"}</Button>
             </div>
         </div>
         </>

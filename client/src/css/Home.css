@@ -1,0 +1,38 @@
+.search-Add-Container{
+    margin-left: 250px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.property-table-container{
+    margin-left: 250px;
+}
+
+.property-table-container .soldBtn{
+    color:#416899;
+    background-color: #F5FAF5;
+    border:none;
+    width:60px;
+    height: 30px;
+    border-radius: 30px;
+}
+
+.search-Add-Container .addPropBtn{
+    background-color: #6AB4F8;
+    border-radius: 30px;
+    height: 40px;
+    width: 120px;
+    border: none;
+    color: white;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+
+.search-bar-container{
+    border-radius: 30px;
+    margin-left: 10px;
+    border-bottom-color: #fff;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+}

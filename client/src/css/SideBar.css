@@ -1,0 +1,40 @@
+.sideBar-Container{
+    background-color: #E1F9F4;
+    position:fixed;
+    width:16%;;
+    height:100vh;
+}
+
+.sideBar-LogoContainer{
+    height:50px;
+    width:50px;
+    margin:0 auto;
+}
+
+.sideBar-LogoContainer img{
+    height: 100%;
+    width: 100%;
+}
+
+.sideBar-NavContainer .propClass a{
+    color:#2289FF;
+}
+
+.sideBar-NavContainer li{
+    margin-bottom: 20px;
+    list-style: none;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.sideBar-NavContainer li a{
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.sideBar-NavContainer li a{
+    color:#AAAAAA;
+}

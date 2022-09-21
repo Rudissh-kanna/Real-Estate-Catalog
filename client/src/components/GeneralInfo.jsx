@@ -7,22 +7,20 @@ import { useContext } from "react";
 
 const GeneralInfo = () => {
 
-    const {formData, setFormData} = useContext(PropertyContext)
+    const {formData, setFormData, helperProp} = useContext(PropertyContext)
     return (
         <>
         <Grid container>
             <Grid item xs={6}>
                 <Container maxWidth={false}>
-                    <TextField label="Name" select size="small"
+                    <TextField label="Name" size="small"
                     value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}>
-                        <MenuItem value="Owner">Owner</MenuItem>
-                        <MenuItem value="Tenent">Tenent</MenuItem>
                     </TextField>
                 </Container>
             </Grid>
             <Grid item xs={6}>
                 <div>
-                    <TextField label="Mobile Number" size="small"
+                    <TextField id="mobile-num" required helperText={helperProp} label="Mobile Number" size="small"
                     value={formData.mobile} onChange={(e) => setFormData({...formData, mobile: e.target.value})}>Enter Mobile Number</TextField>
                 </div>
             </Grid>

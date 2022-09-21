@@ -5,15 +5,14 @@ import { useContext } from "react";
 
 const BasicInfo = () => {
 
-    const {formData, setFormData} = useContext(PropertyContext);
+    const {formData, setFormData, helperProp} = useContext(PropertyContext);
 
     return (
         <Grid container>
             <Grid item xs={6}>
                 <Container maxWidth={false}>
-                    <label>Property Type</label>
-                    <TextField label="Property Type" select size="small" value={formData.propertyType} 
-                    onChange={(e) => setFormData({...formData, propertyType: e.target.value})}>
+                    <TextField id="property-type" required helperText={helperProp} label="Property Type" select size="small" value={formData.propertyType} 
+                    onChange={(e) => setFormData({...formData, propertyType: e.target.value})} >
                         <MenuItem value="Plot">Plot</MenuItem>
                         <MenuItem value="House">House</MenuItem>
                         <MenuItem value="Commercial">Commercial</MenuItem>
