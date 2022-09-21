@@ -12,43 +12,43 @@ import { SearchOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
     root: {
-      border:"none",
-      outline:"none",
-      padding: "2px"
+        border: "none",
+        outline: "none",
+        padding: "2px"
     },
-    tableBody:{
-        border:"2px solid lightblue"
+    tableBody: {
+        border: "2px solid lightblue"
     }
-  }));
+}));
 
 const Home = () => {
     const navigate = useNavigate();
     const classes = useStyles();
-    const [userPropertyData,setUserPropertyData]=useState([]);
+    const [userPropertyData, setUserPropertyData] = useState([]);
     const [searchProperty, setSearchProperty] = useState("");
 
     function handleAddProperty(e) {
         navigate("/add-prop");
     }
 
-    useEffect(()=>{
-        fetch("http://localhost:8080/home",{
-            method:"GET",
+    useEffect(() => {
+        fetch("http://localhost:8080/home", {
+            method: "GET",
             headers: {
-                Accept:"application/json",
+                Accept: "application/json",
                 "Content-Type": "application/json"
                 // "x-access-token":localStorage.getItem("token")
             },
-        }).then((res)=>{
+        }).then((res) => {
             return res.json();
-        }).then((data)=>{
+        }).then((data) => {
             setUserPropertyData(data)
         })
-    },[])
+    }, [])
 
-    function handleStatus(e){
-        if(e.target.value==="unsold"){
-            e.target.value="sold";
+    function handleStatus(e) {
+        if (e.target.value === "unsold") {
+            e.target.value = "sold";
         }
     }
 
@@ -58,29 +58,31 @@ const Home = () => {
             <PageHeader />
             <div className="search-Add-Container">
                 <div className="search-bar-container">
-                <form className={classes.root}>
-                    <TextField   
-                        sx={{padding:3}}
-                        id="bare"
-                        variant="standard"
-                        placeholder="Search PPD ID"
+                    <form className={classes.root}>
+                        <TextField
+                            sx={{ padding: 3 }}
+                            id="bare"
+                            variant="standard"
+                            placeholder="Search PPD ID"
 
-                        InputProps={{
-
+                            InputProps={{
+                                style: {
+                                    paddingLeft: 15
+                                },
                             disableUnderline: true,
-                            endAdornment: (
-                                <IconButton>
-                                    <SearchOutlined />
-                                </IconButton>
-                            ),
-                        }
-                        }
-                        onChange={(e) => {setSearchProperty(e.target.value) }}
-                        classes={{
-                            root:classes.root
-                        }}
-                    />
-                </form>
+                                endAdornment: (
+                                    <IconButton>
+                                        <SearchOutlined />
+                                    </IconButton>
+                                ),
+                            }
+                            }
+                            onChange={(e) => { setSearchProperty(e.target.value) }}
+                            classes={{
+                                root: classes.root
+                            }}
+                        />
+                    </form>
                 </div>
 
                 <button type="submit" className="addPropBtn" variant="contained" color="success" value="+ Add Property" onClick={handleAddProperty}>
@@ -92,31 +94,31 @@ const Home = () => {
                     <Table aria-label="simple table" >
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{color:"#284E91"}}>PPD ID</TableCell>
-                                <TableCell style={{color:"#284E91"}}>Image </TableCell>
-                                <TableCell style={{color:"#284E91"}}>Property </TableCell>
-                                <TableCell style={{color:"#284E91"}}>Contact </TableCell>
-                                <TableCell style={{color:"#284E91"}}>Area </TableCell>
-                                <TableCell style={{color:"#284E91"}}>Views </TableCell>
-                                <TableCell style={{color:"#284E91"}}>Status </TableCell>
-                                <TableCell style={{color:"#284E91"}}>Days Left </TableCell>
-                                <TableCell style={{color:"#284E91"}}>Action </TableCell>
+                                <TableCell style={{ color: "#284E91" }}>PPD ID</TableCell>
+                                <TableCell style={{ color: "#284E91" }}>Image </TableCell>
+                                <TableCell style={{ color: "#284E91" }}>Property </TableCell>
+                                <TableCell style={{ color: "#284E91" }}>Contact </TableCell>
+                                <TableCell style={{ color: "#284E91" }}>Area </TableCell>
+                                <TableCell style={{ color: "#284E91" }}>Views </TableCell>
+                                <TableCell style={{ color: "#284E91" }}>Status </TableCell>
+                                <TableCell style={{ color: "#284E91" }}>Days Left </TableCell>
+                                <TableCell style={{ color: "#284E91" }}>Action </TableCell>
                             </TableRow>
                         </TableHead>
-                        
-                        {userPropertyData.filter((userData)=>{
-                            const PPDID="PPD"+userData._id;
-                            if(searchProperty===""){
+
+                        {userPropertyData.filter((userData) => {
+                            const PPDID = "PPD" + userData._id;
+                            if (searchProperty === "") {
                                 return userData
                             }
-                            else if(PPDID.toLowerCase().includes(searchProperty.toLowerCase())){
+                            else if (PPDID.toLowerCase().includes(searchProperty.toLowerCase())) {
                                 return userData;
                             }
-                        }).map((user,i)=>{
-                            const PPDID="PPD"+user._id;
-                            const views=Math.ceil(Math.random()*10);
-                            const daysLeft=Math.ceil(Math.random()*10);
-                            return(
+                        }).map((user, i) => {
+                            const PPDID = "PPD" + user._id;
+                            const views = Math.ceil(Math.random() * 10);
+                            const daysLeft = Math.ceil(Math.random() * 10);
+                            return (
                                 <TableBody className={classes.tableBody}>
                                     <TableRow>
                                         <TableCell>{PPDID}</TableCell>
@@ -125,11 +127,11 @@ const Home = () => {
                                         <TableCell>{user.mobile}</TableCell>
                                         <TableCell>{user.totalArea}</TableCell>
                                         <TableCell>{views}</TableCell>
-                                        <TableCell><input type="submit" value="unsold" className="soldBtn" onClick={handleStatus}/></TableCell>
+                                        <TableCell><input type="submit" value="unsold" className="soldBtn" onClick={handleStatus} /></TableCell>
                                         <TableCell>{daysLeft}</TableCell>
                                         <TableCell>
-                                            <img src="./Images/table_action1_img.png" alt="action1"></img>  
-                                            <img src="./Images/table_action2_img.png" alt="action2"></img>  
+                                            <img src="./Images/table_action1_img.png" alt="action1"></img>
+                                            <img src="./Images/table_action2_img.png" alt="action2"></img>
                                         </TableCell>
                                     </TableRow>
                                 </TableBody>
