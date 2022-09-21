@@ -1,4 +1,4 @@
-import React, {useState, useContext, useRef} from "react";
+import React, {useState, useContext,} from "react";
 import './Addprop.css'
 import { Container, Typography, Step, Stepper, StepLabel, Button} from '@mui/material'
 import BasicInfo from './BasicInfo';
@@ -14,14 +14,14 @@ const Addprop = () => {
     const [page, setPage] = useState(0);
 
 
-    function handleNext() {
-        if (page === 2) {
-    
-            setFormData({...formData, totalArea: data});
+    function handleNext() { 
+        if (page === 1) {
+            setFormData({...formData, totalArea: data})
         }
-        setPage(page + 1);
-       
+        setPage(page + 1);       
     }
+
+    console.log(data, formData.totalArea);
 
 
     function handlePrev() {
@@ -68,16 +68,16 @@ const Addprop = () => {
                   justifyContent: "space-between"}}
                   activeStep={page}
             >
-                <Step className={(page === 0)?"":"hidden"}>
+                <Step className={(page === 0)?"active":""}>
                     <StepLabel>Basic Info</StepLabel>
                 </Step>
-                <Step>
+                <Step className={(page === 1)?"active":""}>
                     <StepLabel>Property Info</StepLabel>
                 </Step>
-                <Step>
+                <Step className={(page === 2)?"active":""}>
                     <StepLabel>General Info</StepLabel>
                 </Step>
-                <Step>
+                <Step className={(page === 3)?"active":""}>
                     <StepLabel >Locaion Info</StepLabel>
                 </Step>
             </Stepper>

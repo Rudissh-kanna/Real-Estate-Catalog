@@ -1,29 +1,28 @@
-import { TextField, MenuItem, Grid, Container} from "@mui/material";
-import { useState, useContext, useRef } from "react";
+import { TextField, MenuItem, Grid} from "@mui/material";
+import {useContext} from "react";
 import { PropertyContext } from "../context";
 
 const PropertyDetail = () => {
 
     const {formData, setFormData, data, setData} = useContext(PropertyContext);
 
-    const ref = useRef(null);
-
     function handleLengthChange(e) {
         if (formData.breath === '') {
             setFormData({...formData, breath: 0})
         }
             setFormData({...formData, length: e.target.value})
+            setData(parseInt(e.target.value) * formData.breath)
     }
 
     function calcArea (e) {
             if (formData.length === '' ) {
                 setFormData({...formData, length: 0});
             }
+            setFormData({...formData, breath: e.target.value});
             setData(parseInt(e.target.value) * formData.length);
     }
 
-    console.log(ref.current.value);
-
+    // console.log(formData.totalArea, data);
 
     return (
         <Grid container>
@@ -41,7 +40,8 @@ const PropertyDetail = () => {
             </Grid>
             <Grid item xs={6}>
                 <div style={{width:"92%", marginLeft: "4%"}}>
-                     <TextField label="Area" size="small" type="number" ref={ref}  value={data} defaultValue={data} inputProps={{readOnly: true}}></TextField>
+                     <TextField label="Area" size="small" type="number" value={data} inputProps={{readOnly: true}} 
+                     onChange={(e) => setFormData(setData(e.target.value))}></TextField>
                 </div>
             </Grid>
             <Grid item xs={6}>
