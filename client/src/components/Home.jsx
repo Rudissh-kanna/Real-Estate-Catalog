@@ -28,7 +28,7 @@ const Home = () => {
     const [searchProperty, setSearchProperty] = useState("");
 
     function handleAddProperty(e) {
-        navigate("/add-prop");
+        navigate("/addprop");
     }
 
     useEffect(() => {

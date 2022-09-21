@@ -4,16 +4,19 @@ import Home from './components/Home';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Addprop from './components/Addprop';
+import {PropertyProvider} from "./context";
 
 function App() {
   return (
     <BrowserRouter>
+    <PropertyProvider>
     <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/Addprop" element={<Addprop/>}/>
+        <Route path="/addprop" element={<Addprop/>}/>
     </Routes>
+    </PropertyProvider>
     </BrowserRouter>
   );
 }
