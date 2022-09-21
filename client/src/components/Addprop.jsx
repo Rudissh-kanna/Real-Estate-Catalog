@@ -6,6 +6,8 @@ import PropertyDetials from './PropertyDetail';
 import GeneralInfo from './GeneralInfo';
 import LocationInfo from './LocationInfo';
 import { PropertyContext } from "../context";
+import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 const Addprop = () => {
 
@@ -13,15 +15,25 @@ const Addprop = () => {
 
     const [page, setPage] = useState(0);
 
+    const navigate = useNavigate();
+
 
     function handleNext() { 
         if (page === 1) {
             setFormData({...formData, totalArea: data})
         }
+        if (page === 3) {
+            
+           const  config ={
+                header: 'multipart/form-data'
+            }
+
+            axios.post("http://localhost:8080/add-prop", formData, config)
+            .then(res => console.log(res));
+            navigate('/');
+        }
         setPage(page + 1);       
     }
-
-    console.log(data, formData.totalArea);
 
 
     function handlePrev() {

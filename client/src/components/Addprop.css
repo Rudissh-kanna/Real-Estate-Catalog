@@ -2,6 +2,10 @@
     font-family: Montserrat, sans-serif;
 }
 
+body {
+    background: #f5f5f5;
+}
+
 .step-container {
     max-width: 1120px;
     height: fit-content;
@@ -10,9 +14,26 @@
     border-radius: 2rem;
 }
 
+.MuiStepper-root {
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 2rem;
+    background-color: #fff;
+}
+
 .MuiStepLabel-labelContainer span {
     font-size: 1.5rem;
 }
+
+.MuiSvgIcon-root circle {
+    font-size: 1.5rem;
+}
+
+.MuiSvgIcon-root text{
+    font-size: 1.5rem;
+}
+
 
 .MuiStepLabel-root{
     padding: 20px;
@@ -27,8 +48,7 @@
     box-sizing: border-box;
     padding: 10px 10px;
     border-radius: 8px;
-    box-shadow: 5px 5px rgba(65, 64, 64, 0.963);
-    border: 5px solid grey;
+    box-shadow: 5px 5px 5px rgba(65, 64, 64, 0.963);
 }
 
 .form-body {
@@ -48,5 +68,11 @@
 }
 
 .active{
-    background-color: aqua;
+    border-radius: 2rem;
+    background-color: #6AB4F8;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.active .MuiStepLabel-labelContainer span{
+    color: #fff;
 }
