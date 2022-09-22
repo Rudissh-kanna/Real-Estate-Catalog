@@ -1,5 +1,5 @@
 import React, {useState, useContext,} from "react";
-import './Addprop.css'
+import '../css/Addprop.css'
 import { Container, Typography, Step, Stepper, StepLabel, Button} from '@mui/material'
 import BasicInfo from './BasicInfo';
 import PropertyDetials from './PropertyDetail';
@@ -33,8 +33,7 @@ const Addprop = () => {
 
     function checkTotalArea() {
         const input = document.getElementById('total-area').value
-        console.log(parseInt(input));
-        if (input === "" || input === NaN || input <= 0) {
+        if (input === "" || isNaN(input) || input <= 0) {
             setHelperProp("invalid input");
         }
         else {
@@ -46,8 +45,7 @@ const Addprop = () => {
 
     function checkMobileNum() {
         const input = document.getElementById('mobile-num').value
-        console.log(input);
-        if (input === "" || parseInt(input) === NaN || input.length < 10 || input.length > 10) {
+        if (input === "" || isNaN(parseInt(input)) || input.length < 10 || input.length > 10) {
             setHelperProp("Invalid Input");
         }
         else {
@@ -75,6 +73,7 @@ const Addprop = () => {
 
             axios.post("http://localhost:8080/add-prop", formData, config)
             .then(res => console.log(res));
+            setFormData({});
             navigate('/');
         }  
     }
@@ -82,6 +81,9 @@ const Addprop = () => {
     function handlePrev() {
         if (page >= 1) {
             setPage (page - 1);
+        }
+        if (page === 0) {
+            navigate('/');
         }
     }
 
