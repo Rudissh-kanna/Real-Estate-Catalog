@@ -1,10 +1,25 @@
 import "../css/SideBar.css";
+import HomeIcon from '@mui/icons-material/Home';
+import { PropertyContext } from "../context";
+import {useContext} from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const SideBar = () => {
+
+  const {setFormData, setData} = useContext(PropertyContext);
+  const navigate = useNavigate()
+
+  function handleClick () {
+    setFormData({});
+    setData(0);
+    navigate('/');
+  }
+
   return (
     <div className="sideBar-Container">
-      <div className="sideBar-LogoContainer">
-        <img src="./Images/house_logo.png" alt="LOGO"></img>
+      <div className="sideBar-LogoContainer" onClick={handleClick}>
+        <HomeIcon sx={{ fontSize: "6rem", color: "#416899"}}></HomeIcon>
       </div>
       <div className="sideBar-NavContainer">
         <ul>

@@ -12,7 +12,7 @@ import PageHeader from "./PageHeader";
 import SideBar from "./SideBar";
 
 const Addprop = () => {
-  const { formData, setFormData, data, setHelperProp } =
+  const { formData, setFormData, data, setHelperProp,setData } =
     useContext(PropertyContext);
 
   const [page, setPage] = useState(0);
@@ -71,7 +71,9 @@ const Addprop = () => {
       axios
         .post("http://localhost:8080/add-prop", formData, config)
         .then(res => console.log(res));
-      navigate("/");
+        setFormData({});
+        setData("");
+        navigate("/");
     }
   }
 
@@ -80,6 +82,8 @@ const Addprop = () => {
             setPage (page - 1);
         }
         if (page === 0) {
+            setFormData({});
+            setData("");
             navigate('/');
         }
     }

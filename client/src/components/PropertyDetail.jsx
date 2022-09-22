@@ -60,6 +60,7 @@ const PropertyDetail = () => {
             variant="outlined"
             id="total-area"
             helperText={helperProp}
+            error= {(helperProp)? true: false}
             size="small"
             type="number"
             value={data}

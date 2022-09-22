@@ -25,6 +25,7 @@ const GeneralInfo = () => {
               id="mobile-num"
               required
               helperText={helperProp}
+              error= {(helperProp)? true: false}
               label="Mobile Number"
               size="small"
               value={formData.mobile}
@@ -37,12 +38,11 @@ const GeneralInfo = () => {
         </Grid>
         <Grid item xs={6}>
           <div
-            style={{ width: "92%", marginLeft: "4%" }}
-            value={formData.postedBy}
-            onChange={e =>
-              setFormData({ ...formData, postedBy: e.target.value })
-            }>
-            <TextField label="Posted By" select size="small">
+            style={{ width: "92%", marginLeft: "4%" }}>
+            <TextField label="Posted By" select size="small"
+                value={formData.postedBy}
+                onChange={e => setFormData({...formData, postedBy: e.target.value })
+                }>
               <MenuItem value="Owner">Owner</MenuItem>
               <MenuItem value="Tenent">Tenent</MenuItem>
             </TextField>

@@ -23,10 +23,12 @@ const useStyles = makeStyles(theme => ({
     padding: "2px",
   },
   tableBody: {
-    // border: "2px solid lightblue",
+   background: "#fff",
+   borderRadius: 25
   },
   tableCell:{
     textAlign:"center",
+    borderRadius: 10
   }
 }));
 
@@ -82,7 +84,7 @@ const Home = () => {
                 disableUnderline: true,
                 endAdornment: (
                   <IconButton>
-                    <SearchOutlined />
+                    <SearchOutlined style = {{color: "#6AB4F8"}}/>
                   </IconButton>
                 ),
               }}
@@ -108,31 +110,34 @@ const Home = () => {
       </div>
       <div className="property-table-container">
         <TableContainer>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell style={{ color: "#284E91" }}>PPD ID</TableCell>
-                <TableCell style={{ color: "#284E91" }}>Image </TableCell>
-                <TableCell style={{ color: "#284E91" }}>Property </TableCell>
-                <TableCell style={{ color: "#284E91" }}>Contact </TableCell>
-                <TableCell style={{ color: "#284E91" }}>Area </TableCell>
-                <TableCell style={{ color: "#284E91" }}>Views </TableCell>
-                <TableCell style={{ color: "#284E91" }}>Status </TableCell>
-                <TableCell style={{ color: "#284E91" }}>Days Left </TableCell>
-                <TableCell style={{ color: "#284E91" }}>Action </TableCell>
+          <Table aria-label="simple table" style={{ borderCollapse: "separate",
+              borderSpacing: "0px 10px"}}>
+            <TableHead >
+              <TableRow >
+                <TableCell style={{ color: "#284E91", fontWeight: "600"}}>PPD ID</TableCell>
+                <TableCell style={{ color: "#284E91", fontWeight: "600" }}>Image </TableCell>
+                <TableCell style={{ color: "#284E91", fontWeight: "600" }}>Property </TableCell>
+                <TableCell style={{ color: "#284E91", fontWeight: "600" }}>Contact </TableCell>
+                <TableCell style={{ color: "#284E91", fontWeight: "600" }}>Area </TableCell>
+                <TableCell style={{ color: "#284E91", fontWeight: "600" }}>Views </TableCell>
+                <TableCell style={{ color: "#284E91", fontWeight: "600" }}>Status </TableCell>
+                <TableCell style={{ color: "#284E91", fontWeight: "600" }}>Days Left </TableCell>
+                <TableCell style={{ color: "#284E91", fontWeight: "600"  }}>Action </TableCell>
               </TableRow>
             </TableHead>
 
             {userPropertyData
-              .filter(userData => {
-                const PPDID = "PPD" + userData._id;
+              .filter((userData) => { 
+                let temp;
+                const PPDID = "PPD" + userData._id;               
                 if (searchProperty === "") {
-                  return userData;
+                   temp =  userData;
                 } else if (
                   PPDID.toLowerCase().includes(searchProperty.toLowerCase())
                 ) {
-                  return userData;
+                   temp =  userData;
                 }
+                return temp
               })
               .map((user, i) => {
                 const PPDID = "PPD" + user._id.slice(0,6);

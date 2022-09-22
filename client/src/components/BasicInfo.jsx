@@ -13,6 +13,7 @@ const BasicInfo = () => {
             id="property-type"
             required
             helperText={helperProp}
+            error= {(helperProp)? true: false}
             label="Property Type"
             select
             size="small"

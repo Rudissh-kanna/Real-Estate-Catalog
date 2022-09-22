@@ -6,16 +6,15 @@
 }
 
 .sideBar-LogoContainer{
+    margin-top: 4%;
     height:10%;
     width:25%;
-    margin:0 auto;
-    margin-top: 5%;
+    margin-left:25%;
+    margin-bottom: 10%;
 }
-
-.sideBar-LogoContainer img{
-    height: 100%;
-    width: 100%;
-    margin-left: 0%;
+ 
+.logo {
+    font-size: 25px;
 }
 
 .sideBar-NavContainer {
@@ -32,7 +31,7 @@
 }
 
 .sideBar-NavContainer li{
-    margin-bottom: 35%;
+    margin-bottom: 20%;
     list-style: none;
     font-family: 'Source Sans Pro';
     font-style: normal;
