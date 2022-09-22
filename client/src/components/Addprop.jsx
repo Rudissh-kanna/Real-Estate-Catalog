@@ -1,17 +1,10 @@
-import React, { useState, useContext } from "react";
-import "./Addprop.css";
-import {
-  Container,
-  Typography,
-  Step,
-  Stepper,
-  StepLabel,
-  Button,
-} from "@mui/material";
-import BasicInfo from "./BasicInfo";
-import PropertyDetials from "./PropertyDetail";
-import GeneralInfo from "./GeneralInfo";
-import LocationInfo from "./LocationInfo";
+import React, {useState, useContext,} from "react";
+import '../css/Addprop.css'
+import { Container, Typography, Step, Stepper, StepLabel, Button} from '@mui/material'
+import BasicInfo from './BasicInfo';
+import PropertyDetials from './PropertyDetail';
+import GeneralInfo from './GeneralInfo';
+import LocationInfo from './LocationInfo';
 import { PropertyContext } from "../context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -36,33 +29,28 @@ const Addprop = () => {
     }
   }
 
-  function checkTotalArea() {
-    const input = document.getElementById("total-area").value;
-    console.log(parseInt(input));
-    if (input === "" || input === NaN || input <= 0) {
-      setHelperProp("invalid input");
-    } else {
-      setHelperProp("");
-      setFormData({ ...formData, totalArea: data });
-      setPage(page + 1);
+    function checkTotalArea() {
+        const input = document.getElementById('total-area').value
+        if (input === "" || isNaN(input) || input <= 0) {
+            setHelperProp("invalid input");
+        }
+        else {
+            setHelperProp("");
+            setFormData({...formData, totalArea: data})
+            setPage(page + 1)
+        }
     }
-  }
 
-  function checkMobileNum() {
-    const input = document.getElementById("mobile-num").value;
-    console.log(input);
-    if (
-      input === "" ||
-      parseInt(input) === NaN ||
-      input.length < 10 ||
-      input.length > 10
-    ) {
-      setHelperProp("Invalid Input");
-    } else {
-      setHelperProp("");
-      setPage(page + 1);
+    function checkMobileNum() {
+        const input = document.getElementById('mobile-num').value
+        if (input === "" || isNaN(parseInt(input)) || input.length < 10 || input.length > 10) {
+            setHelperProp("Invalid Input");
+        }
+        else {
+            setHelperProp("");
+            setPage(page + 1);
+        }
     }
-  }
 
   function handleNext() {
     if (page === 0) {
@@ -87,11 +75,14 @@ const Addprop = () => {
     }
   }
 
-  function handlePrev() {
-    if (page >= 1) {
-      setPage(page - 1);
+    function handlePrev() {
+        if (page >= 1) {
+            setPage (page - 1);
+        }
+        if (page === 0) {
+            navigate('/');
+        }
     }
-  }
 
   function PageDisplay() {
     if (page === 0) {
@@ -180,6 +171,6 @@ const Addprop = () => {
       </div>
     </>
   );
-};
+          };
 
 export default Addprop;

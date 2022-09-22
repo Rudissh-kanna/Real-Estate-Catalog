@@ -148,7 +148,7 @@ const Home = () => {
                       <TableCell >{user.propertyType}</TableCell>
                       <TableCell >{user.mobile}</TableCell>
                       <TableCell >{user.totalArea}</TableCell>
-                      <TableCell style={{textAlign:"center"}}>{views}</TableCell>
+                      <TableCell style={{paddingLeft: "2rem"}}>{views}</TableCell>
                       <TableCell>
                         <input
                           type="submit"
@@ -157,7 +157,7 @@ const Home = () => {
                           onClick={handleStatus}
                         />
                       </TableCell>
-                      <TableCell style={{textAlign:"center"}}>{daysLeft}</TableCell>
+                      <TableCell style={{paddingLeft: "2rem"}}>{daysLeft}</TableCell>
                       <TableCell>
 
                       <Tooltip title="Read">

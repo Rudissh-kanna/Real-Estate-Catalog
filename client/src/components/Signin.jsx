@@ -69,8 +69,10 @@ const Signin = () => {
         localStorage.setItem("token", res.token);
         localStorage.setItem("name", res.data.name);
         localStorage.setItem("id", res.data._id);
+        console.log(window.location);
         setError(res.message);
-        navigate("/");
+        window.location.href = '/'
+        // navigate("/");
       });
   };
 
