@@ -8,10 +8,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    margin-right: 4%;
 }
 
 .property-table-container{
     margin-left: 18%;
+    margin-right: 4%;
 }
 .property-table-container .soldBtn{
     color:#416899;
@@ -21,6 +23,33 @@
     height: 30px;
     border-radius: 30px;
 }
+
+.MuiTableRow-root {
+    background-color: #fff;
+}
+
+.MuiTableRow-root th:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .MuiTableRow-root th:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+
+.MuiTableRow-root td:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .MuiTableRow-root td:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 
 .search-Add-Container .addPropBtn{
     background-color: #6AB4F8;

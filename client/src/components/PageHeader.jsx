@@ -1,16 +1,15 @@
 
 import "../css/PageHeader.css";
-import { useNavigate } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 const PageHeader = () => {
-  const navigate = useNavigate();
+
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("name")
     localStorage.removeItem("id")
-    navigate("/login");
+    window.location.href = "/login";
   };
 //   const rand = Math.ceil(Math.random()) * 10;
 //   const rand1 = Math.ceil(Math.random()) * 100;

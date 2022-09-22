@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { makeStyles, Card } from "@material-ui/core";
+import { makeStyles, Card, InputAdornment, IconButton} from "@material-ui/core";
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
@@ -13,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     padding: theme.spacing(2),
-    marginTop: "9%",
 
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
@@ -40,6 +41,8 @@ const Signin = () => {
   const [userDetails, setUserDetails] = useState({});
   const [error, setError] = useState("");
 
+  const [isVisibility, setVisibility] = useState(false);
+
   const handleClose = () => {
     navigate("/signup");
   };
@@ -52,6 +55,12 @@ const Signin = () => {
       
   //   }
   // },[sucess])
+
+  function handleClickShowPassword() {
+    setVisibility(!isVisibility);
+  }
+
+
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -77,7 +86,8 @@ const Signin = () => {
   };
 
   return (
-    <>
+    <div style = {{width: "100%", height: "100vh", backgroundColor: "#E1F9F4", position: "fixed"}}>
+      <div style={{marginTop: "9%"}}>
       <form className={classes.root} onSubmit={handleSubmit}>
         <Card className={classes.card} variant="outlined">
           <h1 style={{ fontWeight: "bold", textShadow: "#7f8c8d 1px 0 5px" }}>
@@ -91,13 +101,25 @@ const Signin = () => {
             required
             onChange={handleChange}
           />
-          <TextField
-            label="Password"
+           <TextField
+            id="adornment-password"
+            placeholder="Password"
             variant="filled"
-            type="password"
+            type={isVisibility ? 'text' : 'password'}
             name="password"
-            required
             onChange={handleChange}
+            InputProps={{
+              endAdornment:(
+              <InputAdornment position="end" >
+              <IconButton
+                aria-label="Toggle password visibility"
+                onClick={handleClickShowPassword}
+              >
+                {isVisibility ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+              </InputAdornment>
+              )
+            }}
           />
           {error && <p className="error_msg">{error}</p>}
           <div style={{ alignItem: "center" }}>
@@ -116,7 +138,8 @@ const Signin = () => {
           </Link>
         </div>
       </form>
-    </>
+      </div>
+    </div>
   );
 };
 

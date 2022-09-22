@@ -5,8 +5,13 @@
     padding: 8px
 }
 
+.header-userID-container {
+    color: #B4B4C6;
+}
+
 .header-Container .header-userName-container span{
     margin-right: 10px;
+    color: #a6a6a6;
 }
 
 .header-Container .header-userName-container .header-userName-img img{

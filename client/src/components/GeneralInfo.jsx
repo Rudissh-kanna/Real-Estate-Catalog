@@ -25,6 +25,7 @@ const GeneralInfo = () => {
               id="mobile-num"
               required
               helperText={helperProp}
+              error= {(helperProp)? true: false}
               label="Mobile Number"
               size="small"
               value={formData.mobile}

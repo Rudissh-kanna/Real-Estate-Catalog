@@ -92,3 +92,7 @@ body {
 .active .MuiStepLabel-labelContainer span{
     color: #fff;
 }
+
+.MuiFormHelperText-root{
+    color:rgba(255,0,0,0.5);
+  }
