@@ -15,8 +15,8 @@ dotenv.config();
 
 router.post("/signup", async (req, res) => {
   try {
-    const { email, password, confirmpassword } = req.body;
-    if (!(email && password && confirmpassword)) {
+    const { email, password, confirmpassword, name } = req.body;
+    if (!(email && password && confirmpassword && name)) {
       res.status(400).send({status: "failed",message:"All input is required"});
     }
     const oldUser = await userModel.findOne({ email });
@@ -29,10 +29,11 @@ router.post("/signup", async (req, res) => {
 
     if (password === confirmpassword) {
       const user = await userModel.create({
+        name,
         email: email.toLowerCase(),
         password: encryptedPassword,
       });
-
+// console.log(user)
       res.json({
         status: "sucess",
         message: "SignUp Successful",
@@ -69,7 +70,8 @@ router.post("/login", async (req, res) => {
           status: "failed",
           message: "Wrong Password",
         });
-      } else {
+      } 
+      else {
         const token = jwt.sign(
           {
             exp: Math.floor(Date.now() / 1000) + 60 * 60,
@@ -81,6 +83,7 @@ router.post("/login", async (req, res) => {
         res.json({
           status: "Sucess",
           token,
+          data
         });
       }
     }

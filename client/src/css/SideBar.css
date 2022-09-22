@@ -6,22 +6,27 @@
 }
 
 .sideBar-LogoContainer{
-    height:50px;
-    width:50px;
+    height:10%;
+    width:25%;
     margin:0 auto;
+    margin-top: 5%;
 }
 
 .sideBar-LogoContainer img{
     height: 100%;
     width: 100%;
+    margin-left: 0%;
 }
-
 .sideBar-NavContainer .propClass a{
     color:#2289FF;
+    
+}
+.nameSide{
+    font-size: 15px;
 }
 
 .sideBar-NavContainer li{
-    margin-bottom: 20px;
+    margin-bottom: 20%;
     list-style: none;
     font-family: 'Source Sans Pro';
     font-style: normal;
@@ -29,9 +34,12 @@
     font-size: 18px;
     line-height: 35px;
 }
+.sideBar-NavContainer ul{
+    margin-top: 10%;
+}
 
 .sideBar-NavContainer li a{
-    margin-left: 20px;
+    margin-left: 3%;
     text-decoration: none;
 }
 

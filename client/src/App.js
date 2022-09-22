@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
     <PropertyProvider>
     <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={localStorage.getItem("token") !== null ?<Home/> : <Signin/>}/>
         <Route path="/login" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/addprop" element={<Addprop/>}/>
