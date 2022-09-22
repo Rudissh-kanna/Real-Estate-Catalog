@@ -1,7 +1,12 @@
 import React, { useState } from "react";
-import { makeStyles, Card, IconButton, InputAdornment } from "@material-ui/core";
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import {
+  makeStyles,
+  Card,
+  IconButton,
+  InputAdornment,
+} from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useNavigate, Link } from "react-router-dom";
@@ -51,7 +56,6 @@ const Signup = () => {
     setVisibility(!isVisibility);
   }
 
-
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -72,100 +76,90 @@ const Signup = () => {
   };
 
   return (
-    <div  style = {{width: "100%", height: "100vh", backgroundColor: "#E1F9F4", position: "fixed"}}>
-    <div style={{marginTop: "4%"}}>
-    <form className={classes.root} onSubmit={handleSubmit}>
-      <Card className={classes.card} variant="outlined">
-        <h1 style={{ fontWeight: "bold", textShadow: "#7f8c8d 1px 0 5px" }}>
-          User Registration Form
-        </h1>
-        <TextField
-          label="Name"
-          variant="filled"
-          type="name"
-          name="name"
-          required
-          onChange={handleChange}
-        />
-        <TextField
-          label="Email"
-          variant="filled"
-          type="email"
-          name="email"
-          required
-          onChange={handleChange}
-        />
-        {/* <TextField
-          label="Password"
-          variant="filled"
-          type="password"
-          name="password"
-          required
-          onChange={handleChange}
-        /> */}
-             <TextField
-            id="adornment-password"
-            placeholder="Password"
-            variant="filled"
-            type={isVisibility ? 'text' : 'password'}
-            name="password"
-            onChange={handleChange}
-            InputProps={{
-              endAdornment:(
-              <InputAdornment position="end" >
-              <IconButton
-                aria-label="Toggle password visibility"
-                onClick={handleClickShowPassword}
-              >
-                {isVisibility ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-              </InputAdornment>
-              )
-            }}
-          />
-        {/* <TextField
-          label="Confirm Password"
-          variant="filled"
-          type="password"
-          name="confirmpassword"
-          required
-          onChange={handleChange} */}
-        {/* /> */}
-        <TextField
-            id="adornment-password"
-            placeholder="Confirm Password"
-            variant="filled"
-            type={isVisibility ? 'text' : 'password'}
-            name="confirmpassword"
-            onChange={handleChange}
-            InputProps={{
-              endAdornment:(
-              <InputAdornment position="end" >
-              <IconButton
-                aria-label="Toggle password visibility"
-                onClick={handleClickShowPassword}
-              >
-                {isVisibility ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-              </InputAdornment>
-              )
-            }}
-          />
-        <div>
-          {error && <p className="error_msg">{error}</p>}
-          <Button type="submit" variant="contained" color="primary">
-            Sign Up
-          </Button>
-        </div>
-      </Card>
-      <div style={{ alignItem: "center", marginTop: "3%" }}>
-        <span>Already have an Account ? </span>
-        <Link to="/login" style={{ fontSize: "25px" }}>
-          Login here!
-        </Link>
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        backgroundColor: "#E1F9F4",
+        position: "fixed",
+      }}>
+      <div style={{ marginTop: "4%" }}>
+        <form className={classes.root} onSubmit={handleSubmit}>
+          <Card className={classes.card} variant="outlined">
+            <h1 style={{ fontWeight: "bold", textShadow: "#7f8c8d 1px 0 5px" }}>
+              User Registration Form
+            </h1>
+            <TextField
+              label="Name"
+              variant="filled"
+              type="name"
+              name="name"
+              required
+              onChange={handleChange}
+            />
+            <TextField
+              label="Email"
+              variant="filled"
+              type="email"
+              name="email"
+              required
+              onChange={handleChange}
+            />
+            <TextField
+              id="adornment-password"
+              label="Password"
+              variant="filled"
+              type={isVisibility ? "text" : "password"}
+              name="password"
+              onChange={handleChange}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="Toggle password visibility"
+                      onClick={handleClickShowPassword}>
+                      {isVisibility ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              id="adornment-password"
+              label="Confirm Password"
+              variant="filled"
+              type={isVisibility ? "text" : "password"}
+              name="confirmpassword"
+              onChange={handleChange}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="Toggle password visibility"
+                      onClick={handleClickShowPassword}>
+                      {isVisibility ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <div>
+              {error && <p className="error_msg">{error}</p>}
+              <Button type="submit" variant="contained" color="primary">
+                Sign Up
+              </Button>
+            </div>
+          </Card>
+          <div style={{ alignItem: "center", marginTop: "3%" }}>
+            <span>Already have an Account ? </span>
+            <Link to="/login" style={{ fontSize: "25px" }}>
+              Login here!
+            </Link>
+          </div>
+        </form>
       </div>
-    </form>
-    </div>
     </div>
   );
 };
