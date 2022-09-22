@@ -82,6 +82,8 @@ const Addprop = () => {
             setPage (page - 1);
         }
         if (page === 0) {
+            setFormData({});
+            setData("");
             navigate('/');
         }
     }
