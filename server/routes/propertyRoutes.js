@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 
 
 // get request to display properties at home page
-router.get('/home', async(req,res) => {
+router.get('/home',auth, async(req,res) => {
     try {
         const data = await propModel.find();
         res.status(200).json(data);
@@ -19,7 +19,7 @@ router.get('/home', async(req,res) => {
 })
 
 // post request to add property
- router.post('/add-prop', async (req,res) => {
+ router.post('/add-prop',auth, async (req,res) => {
     try {
         const prop = await propModel.create(req.body);
         res.status(201).json({
