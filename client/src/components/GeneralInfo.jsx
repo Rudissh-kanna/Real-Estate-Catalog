@@ -5,6 +5,11 @@ import { useContext } from "react";
 
 const GeneralInfo = () => {
   const { formData, setFormData, helperProp } = useContext(PropertyContext);
+
+  function handleClick(event) {
+    event.target.nextElementSibling.click();
+  }
+
   return (
     <>
       <Grid container>
@@ -94,6 +99,7 @@ const GeneralInfo = () => {
           </div>
         </Grid>
       </Grid>
+      <div>
       <Button
         sx={{
           padding: 5,
@@ -103,9 +109,11 @@ const GeneralInfo = () => {
             backgroundColor: "info.light",
           },
           marginLeft: 2,
-        }}>
+        }} onClick={handleClick}>
         <CameraAltIcon style={{ color: "white" }}></CameraAltIcon>
       </Button>
+      <input type="file" hidden id="image-upload"/>
+      </div>
     </>
   );
 };
