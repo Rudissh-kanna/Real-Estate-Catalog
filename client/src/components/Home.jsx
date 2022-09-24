@@ -55,14 +55,25 @@ const Home = () => {
         return res.json();
       })
       .then(data => {
-        setUserPropertyData(data);
+        setUserPropertyData(data.map(item => {
+          return (
+            {...item, daysLeft: Math.ceil(Math.random() * 10), status: "unsold", views: Math.ceil(Math.random() * 10)}
+          )
+        }));
       });
   }, []);
 
   function handleStatus(e) {
-    if (e.target.value === "unsold") {
-      e.target.value = "sold";
-    }
+    const newArr = userPropertyData.map((item, i) => {
+      if (parseInt(e.target.name) === i) {
+        const updatedItem = {...item, daysLeft: 0, status: "sold"};
+        return updatedItem;
+      }
+      return item;
+    })
+
+    console.log(newArr);
+    setUserPropertyData(newArr);
   }
 
   return (
@@ -125,7 +136,7 @@ const Home = () => {
                 <TableCell style={{ color: "#284E91", fontWeight: "600"  }}>Action </TableCell>
               </TableRow>
             </TableHead>
-
+            <TableBody className={classes.tableBody}  >
             {userPropertyData
               .filter((userData) => { 
                 let temp;
@@ -141,11 +152,8 @@ const Home = () => {
               })
               .map((user, i) => {
                 const PPDID = "PPD" + user._id.slice(0,6);
-                const views = Math.ceil(Math.random() * 10);
-                const daysLeft = Math.ceil(Math.random() * 10);
                 return (
-                  <TableBody className={classes.tableBody}>
-                    <TableRow className={classes.tableCell}>
+                    <TableRow className={classes.tableCell} key={i}>
                       <TableCell>{PPDID}</TableCell>
                       <TableCell>
                         <img src="./Images/table_img.png" alt="prop_img"></img>
@@ -153,18 +161,18 @@ const Home = () => {
                       <TableCell >{user.propertyType}</TableCell>
                       <TableCell >{user.mobile}</TableCell>
                       <TableCell >{user.totalArea}</TableCell>
-                      <TableCell style={{paddingLeft: "2rem"}}>{views}</TableCell>
+                      <TableCell style={{paddingLeft: "2rem"}}>{user.views}</TableCell>
                       <TableCell>
                         <input
+                          name = {`${i}`}
                           type="submit"
-                          value="unsold"
+                          value={user.status}
                           className="soldBtn"
                           onClick={handleStatus}
                         />
                       </TableCell>
-                      <TableCell style={{paddingLeft: "2rem"}}>{daysLeft}</TableCell>
+                      <TableCell style={{paddingLeft: "2rem"}}>{user.daysLeft}</TableCell>
                       <TableCell>
-
                       <Tooltip title="Read">
                         <img
                           src="./Images/table_action1_img.png"
@@ -178,9 +186,9 @@ const Home = () => {
                           </Tooltip>
                       </TableCell>
                     </TableRow>
-                  </TableBody>
                 );
               })}
+          </TableBody>
           </Table>
         </TableContainer>
       </div>
