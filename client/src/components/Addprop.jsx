@@ -69,7 +69,7 @@ const Addprop = () => {
       };
 
       axios
-        .post("http://localhost:8080/add-prop", formData, config)
+        .post("https://real-estate-backend-agv.herokuapp.com/add-prop", formData, config)
         .then(res => console.log(res));
         setFormData({});
         setData("");

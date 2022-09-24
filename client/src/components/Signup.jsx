@@ -59,7 +59,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = await fetch("http://localhost:8080/signup", {
+    const data = await fetch("https://real-estate-backend-agv.herokuapp.com/signup", {
       method: "POST",
       headers: {
         Accept: "application/json",

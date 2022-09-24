@@ -43,7 +43,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    fetch("http://localhost:8080/home", {
+    fetch("https://real-estate-backend-agv.herokuapp.com/home", {
       method: "GET",
       headers: {
         Accept: "application/json",
