@@ -5,13 +5,14 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 const userModel = require("../model/user");
-
+const cors = require('cors');
 const auth = require("../middleware/auth");
 
 const secret = "RESTAPI";
 
 
 dotenv.config();
+router.use(cors());
 
 router.post("/signup", async (req, res) => {
   try {

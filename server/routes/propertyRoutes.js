@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const propModel = require('../model/property');
 const auth = require('../middleware/auth');
+const cors = require('cors');
 
+router.use(cors());
 
 // get request to display properties at home page
 router.get('/home',auth, async(req,res) => {
