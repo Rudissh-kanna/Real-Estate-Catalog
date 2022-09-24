@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 import { useNavigate, Link } from "react-router-dom";
 import "../css/Style.css";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -48,7 +48,7 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [isVisibility, setVisibility] = useState(false);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
@@ -56,7 +56,7 @@ const Signup = () => {
     setVisibility(!isVisibility);
   }
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = await fetch("http://localhost:8080/signup", {
@@ -66,7 +66,7 @@ const Signup = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userDetails),
-    }).then(data => data.json());
+    }).then((data) => data.json());
 
     if (data.status === "sucess") {
       navigate("/login");
@@ -82,12 +82,13 @@ const Signup = () => {
         height: "100vh",
         backgroundColor: "#E1F9F4",
         position: "fixed",
-      }}>
-      <div style={{ marginTop: "4%" }}>
+      }}
+    >
+      <div style={{ marginTop: "3%" }}>
         <form className={classes.root} onSubmit={handleSubmit}>
           <Card className={classes.card} variant="outlined">
             <h1 style={{ fontWeight: "bold", textShadow: "#7f8c8d 1px 0 5px" }}>
-              User Registration Form
+              Registration Form
             </h1>
             <TextField
               label="Name"
@@ -118,7 +119,8 @@ const Signup = () => {
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="Toggle password visibility"
-                      onClick={handleClickShowPassword}>
+                      onClick={handleClickShowPassword}
+                    >
                       {isVisibility ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -138,7 +140,8 @@ const Signup = () => {
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="Toggle password visibility"
-                      onClick={handleClickShowPassword}>
+                      onClick={handleClickShowPassword}
+                    >
                       {isVisibility ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
