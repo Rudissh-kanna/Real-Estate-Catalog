@@ -9,7 +9,7 @@ mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser: true, useUnifiedTop
     console.log('connected to DB')
 })
 
-const Port = env.process.Port || 8080;
+const Port = process.env.Port || 8080;
 
 
 app.listen(Port, () => console.log('Server running at 8080......'));
