@@ -77,17 +77,16 @@ const Signin = () => {
     })
       .then((data) => data.json())
       .then((res) => {
-        console.log(res.status);
+        setError(res.message);
         localStorage.setItem("token", res.token);
         localStorage.setItem("name", res.data.name);
         localStorage.setItem("id", res.data._id);
         console.log(window.location);
-        setError(res.message);
         window.location.href = "/";
         // navigate("/");
       });
   };
-
+  console.log("Show error -> ", error);
   return (
     <div
       style={{
