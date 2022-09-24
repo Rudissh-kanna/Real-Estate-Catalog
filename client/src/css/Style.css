@@ -21,3 +21,12 @@
 	cursor: pointer;
 }
 
+.bg_image{
+	height: 7rem;
+	width: 34rem;
+}
+
+.bg_image img{
+	height: 100%;
+	width:100%;
+}

@@ -15,7 +15,7 @@ const PageHeader = () => {
 //   const rand1 = Math.ceil(Math.random()) * 100;
 //   const user_id = rand + "PPD" + rand1;
   const id = localStorage.getItem("id").slice(-8);
-  console.log(id);
+  //console.log(id);
   // var user = JSON.parse(localStorage.getItem(data));
   // console.log(user);
   // console.log(new URLSearchParams(window.location.search))

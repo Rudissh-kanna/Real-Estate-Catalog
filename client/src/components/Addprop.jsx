@@ -20,7 +20,7 @@ const Addprop = () => {
   const navigate = useNavigate();
 
   function checkPropertyType() {
-    const input = document.getElementById("property-type").innerText;
+    let input = document.getElementById("property-type").innerText;
     if (input === "House" || input === "Plot" || input === "Commercial") {
       setHelperProp("");
       setPage(page + 1);

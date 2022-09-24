@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../css/Style.css";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -52,7 +52,7 @@ const Signin = () => {
     navigate("/signup");
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
   // useEffect(()=>{
@@ -65,7 +65,7 @@ const Signin = () => {
     setVisibility(!isVisibility);
   }
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     await fetch("http://localhost:8080/login", {
       method: "POST",
@@ -75,8 +75,8 @@ const Signin = () => {
       },
       body: JSON.stringify(userDetails),
     })
-      .then(data => data.json())
-      .then(res => {
+      .then((data) => data.json())
+      .then((res) => {
         console.log(res.status);
         localStorage.setItem("token", res.token);
         localStorage.setItem("name", res.data.name);
@@ -95,13 +95,18 @@ const Signin = () => {
         height: "100vh",
         backgroundColor: "#E1F9F4",
         position: "fixed",
-      }}>
-      <div style={{ marginTop: "9%" }}>
+      }}
+    >
+      <div style={{ marginTop: "3%" }}>
         <form className={classes.root} onSubmit={handleSubmit}>
           <Card className={classes.card} variant="outlined">
+            <div className="bg_image">
+              <img src="./Images/loginBGImage.jpg" alt="bgImg" />
+            </div>
             <h1 style={{ fontWeight: "bold", textShadow: "#7f8c8d 1px 0 5px" }}>
-              User Login Form
+              Login Form
             </h1>
+            
             <TextField
               label="Email"
               variant="filled"
@@ -122,7 +127,8 @@ const Signin = () => {
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="Toggle password visibility"
-                      onClick={handleClickShowPassword}>
+                      onClick={handleClickShowPassword}
+                    >
                       {isVisibility ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -131,11 +137,11 @@ const Signin = () => {
             />
             {error && <p className="error_msg">{error}</p>}
             <div style={{ alignItem: "center" }}>
-              <Button variant="contained" onClick={handleClose}>
-                Cancel
-              </Button>
               <Button type="submit" variant="contained" color="primary">
                 Sign In
+              </Button>
+              <Button variant="contained" onClick={handleClose}>
+                Sign Up
               </Button>
             </div>
           </Card>
