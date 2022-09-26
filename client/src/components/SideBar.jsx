@@ -26,17 +26,14 @@ const SideBar = () => {
           <li>
             <span className="propClass">
               <img src="./Images/property_img.png" alt="property_img"></img>
-              <a href="/#" onClick={e => e.preventDefault()} className="nameSide">
-                Property
-              </a>
             </span>
           </li>
           <li>
             <span>
               <img src="./Images/assistance_img.png" alt="assistance_img"></img>
-              <a href="/#" onClick={e => e.preventDefault()} className="nameSide">
+              <span className="nameSide">
                 Assistance
-              </a>
+              </span>
             </span>
           </li>
           <li>
@@ -44,9 +41,9 @@ const SideBar = () => {
               <img
                 src="./Images/receivedInterest_img.png"
                 alt="receivedInterest_img"></img>
-              <a href="/#" onClick={e => e.preventDefault()} className="nameSide">
+              <span className="nameSide">
                 Received Interest{" "}
-              </a>
+              </span>
             </span>
           </li>
           <li>
@@ -54,9 +51,9 @@ const SideBar = () => {
               <img
                 src="./Images/sentInterest_img.png"
                 alt="sentInterest_img"></img>
-              <a href="/#" onClick={e => e.preventDefault()} className="nameSide">
+              <span className="nameSide">
                 Sent Interest
-              </a>
+              </span>
             </span>
           </li>
           <li>
@@ -64,17 +61,17 @@ const SideBar = () => {
               <img
                 src="./Images/propertyViews_img.png"
                 alt="propertyViews_img"></img>
-              <a href="/#" onClick={e => e.preventDefault()} className="nameSide">
+              <span className="nameSide">
                 Property Views
-              </a>
+              </span>
             </span>
           </li>
           <li>
             <span>
               <img src="./Images/tariffPlan_img.png" alt="tariffPlan_img"></img>
-              <a href="/#" onClick={e => e.preventDefault()} className="nameSide">
+              <span className="nameSide">
                 Tariff Plan
-              </a>
+              </span>
             </span>
           </li>
         </ul>
