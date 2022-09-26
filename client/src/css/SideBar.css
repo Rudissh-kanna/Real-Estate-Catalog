@@ -28,6 +28,9 @@
 }
 .nameSide{
     font-size: 1rem;
+    font-weight: 600;
+    color: #AAAAAA;
+    margin-left: 1%;
 }
 
 .sideBar-NavContainer li{

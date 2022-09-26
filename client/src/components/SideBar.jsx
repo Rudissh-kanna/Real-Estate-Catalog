@@ -26,6 +26,9 @@ const SideBar = () => {
           <li>
             <span className="propClass">
               <img src="./Images/property_img.png" alt="property_img"></img>
+              <span className="nameSide">
+                Property
+              </span>
             </span>
           </li>
           <li>
